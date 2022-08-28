@@ -1,5 +1,5 @@
 # Modified version of KrbRelayUp to execute custom executables
-This version of KrbRelayUp.exe runs C:\Temp\update.exe instead of opening a new commad prompt. Useful if you don't have RDP access to a machine and need to get a reverse shell as SYSTEM. 
+**KrbRelayUp-Shell.exe**: This version of KrbRelayUp.exe runs C:\Temp\update.exe instead of opening a new commad prompt. Useful if you don't have RDP access to a machine and need to get a reverse shell as SYSTEM. 
 
 # Example Usage with msfvenom payloads
 
